@@ -8,15 +8,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Transform transformPlayer;
     //unityde transformplayera forward1i atadık.
 
-    
-
-
-
-    void Start()
-    {
-        
-    }
-
+    //start method
     void Update()
     {
 
