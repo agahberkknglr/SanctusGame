@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     private bool stickToPlayer;
     [SerializeField] private Transform transformPlayer;
-    //unityde transformplayera forward1i atadık.
+    //we assigned transformplayer to forward1 in unity
 
     //start method
     void Update()
@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
         {
             float distanceToPlayer = Vector3.Distance(transformPlayer.position, transform.position);
             //Debug.Log(distanceToPlayer);
-            //transformplayer forward1. normal transform position da topun positionunu buluyor.
+            //transforplayer find position of the ball in forwad1's normal transform position.
 
             if (distanceToPlayer<0.5)
             {
