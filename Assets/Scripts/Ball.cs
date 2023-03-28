@@ -43,7 +43,8 @@ public class Ball : MonoBehaviour
 
             Vector2 currentLocation = new Vector2(transform.position.x, transform.position.z);
             speed = Vector2.Distance(currentLocation, previousLocation) / Time.deltaTime;
-            transform.position = playerBallPosition.position;
+            //transform.position = playerBallPosition.position;
+            transform.position = new Vector3(playerBallPosition.position.x, -0.4205842f, playerBallPosition.position.z);
             transform.Rotate(new Vector3(transformPlayer.right.x, 0, transformPlayer.right.z), speed, Space.World);
             previousLocation = currentLocation;
         }
