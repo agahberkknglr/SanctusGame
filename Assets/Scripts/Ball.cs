@@ -7,11 +7,12 @@ public class Ball : MonoBehaviour
     private bool stickToPlayer;
     [SerializeField] private Transform transformPlayer;
     //we assigned transformplayer to forward1 in unity
+    
 
     //start method
     void Update()
     {
-
+        
 
         if (!stickToPlayer) //false
         {
@@ -19,7 +20,7 @@ public class Ball : MonoBehaviour
             //Debug.Log(distanceToPlayer);
             //transforplayer find position of the ball in forwad1's normal transform position.
 
-            if (distanceToPlayer<0.5)
+            if (distanceToPlayer<1)//0.5 for model
             {
                 stickToPlayer = true;
             }
@@ -28,6 +29,7 @@ public class Ball : MonoBehaviour
         else //true 
         {
             transform.position = transformPlayer.position;
+            //Debug.Log("girdi");
         }
     }
 }
