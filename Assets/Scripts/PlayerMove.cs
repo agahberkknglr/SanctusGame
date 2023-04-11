@@ -136,7 +136,7 @@ namespace StarterAssets
 
         public override void OnStartLocalPlayer()
         {
-            GameObject.FindGameObjectWithTag("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = transform.GetChild(0).transform;
+            GameObject.FindGameObjectWithTag("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = transform.GetChild(1).transform;
         }
 
         public override void OnStartAuthority()

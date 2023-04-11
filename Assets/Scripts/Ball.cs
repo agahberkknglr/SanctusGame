@@ -19,11 +19,18 @@ public class Ball : MonoBehaviour
         //playerBallPosition = transformPlayer.Find("Geometry").Find("BallLocation");
         //scriptPlayer = transformPlayer.GetComponent<Player>();
         //playerBallPosition = transformPlayer.Find("BallPosition");
+        
     }
 
 
     void Update()
     {
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            transformPlayer =  GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0);
+            playerBallPosition =  GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(1);
+            scriptPlayer =  GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        }
 
         if (!stickToPlayer) //false
         {

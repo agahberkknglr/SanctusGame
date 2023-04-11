@@ -1141,7 +1141,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342527555}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1459,7 +1459,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543039843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9678,11 +9678,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffcea910df27436da004a208712795f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformPlayer: {fileID: 7892888704847046401, guid: 53dbe1d287366ed47b9f3d0f6492eb91,
+  transformPlayer: {fileID: 6193944310343599622, guid: 1f024eedbaca24b4aad07a1215db2301,
     type: 3}
   stickToPlayer: 0
-  playerBallPosition: {fileID: 0}
-  scriptPlayer: {fileID: 0}
+  playerBallPosition: {fileID: 747893241801973856, guid: 159a8838d0cc1ca42b234707d6b06ab3,
+    type: 3}
+  scriptPlayer: {fileID: 4280953616399089020, guid: 53dbe1d287366ed47b9f3d0f6492eb91,
+    type: 3}
 --- !u!4 &9073308349196980691
 Transform:
   m_ObjectHideFlags: 0
