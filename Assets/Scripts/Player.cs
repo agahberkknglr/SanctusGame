@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using TMPro;
@@ -38,7 +36,7 @@ public class Player: MonoBehaviour
 
         soundCheer.Play();
 
-        textGoal.fontSize = 0f;
+      //  textGoal.fontSize = 0f;
     }
 
     void Update()
