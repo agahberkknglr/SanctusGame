@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using TMPro;
@@ -7,11 +5,13 @@ using TMPro;
 public class Player: MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textScore;
-
     [SerializeField] private TextMeshProUGUI textGoal;
+    [SerializeField] private Transform transformPlayer;
+    public GameObject ball;
+    public float ballSpeed;
+    public Transform playerBallPosition;
     private StarterAssetsInputs starterAssetsInputs;
     private Animator animator;
-    private Ball ballAttachedToPlayer;
     private float timeShot = -1f;
     private const int LAYER_SHOOT = 1;
     private CharacterController characterController;
@@ -22,14 +22,16 @@ public class Player: MonoBehaviour
     private AudioSource soundCheer;
     private AudioSource soundGoalCheer;
     private float distanceSinceLastDribble;
+    private Vector2 previousBallLocation;
 
-    public Ball BallAttachedToPlayer { get => ballAttachedToPlayer; set=> ballAttachedToPlayer = value;}
+    public bool BallAttachedToPlayer = false;
     
     void Start()
     {
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        ball = GameObject.FindGameObjectWithTag("Ball");
 
         soundBallKick = GameObject.Find("Sound/ball-kick").GetComponent<AudioSource>();
         soundBallDribble = GameObject.Find("Sound/ball-dribble").GetComponent<AudioSource>();
@@ -39,6 +41,10 @@ public class Player: MonoBehaviour
         soundCheer.Play();
 
         textGoal.fontSize = 0f;
+
+        transformPlayer =  this.transform.GetChild(0).GetChild(0); //player cocuklarina eristik 
+        playerBallPosition =  this.transform.GetChild(0).GetChild(1);
+
     }
 
     void Update()
@@ -53,17 +59,16 @@ public class Player: MonoBehaviour
         }
         if (timeShot>0)
         {
-            if (BallAttachedToPlayer != null && Time.time - timeShot> 0.2)
+            if (ball != null && BallAttachedToPlayer && Time.time - timeShot> 0.2)
             {
 
                 soundBallKick.Play();
 
-                BallAttachedToPlayer.stickToPlayer = false;
-                Rigidbody rigidbody = ballAttachedToPlayer.transform.gameObject.GetComponent<Rigidbody>();
+                BallAttachedToPlayer = false;
+                Rigidbody rigidbody = ball.transform.gameObject.GetComponent<Rigidbody>();
                 Vector3 shootdirection = transform.forward;
                 shootdirection.y += 0.4f;
-                rigidbody.AddForce(shootdirection * 4f, ForceMode.Impulse);
-                BallAttachedToPlayer = null;
+                rigidbody.AddForce(shootdirection * 4f, ForceMode.Impulse);//sut gucu
             }
 
              if(Time.time - timeShot > 0.5)
@@ -83,7 +88,7 @@ public class Player: MonoBehaviour
             textGoal.fontSize = 200 - (goalTextColorAlpha * 1-0);
         }
 
-        if(BallAttachedToPlayer != null)
+        if(ball != null)
         {
             distanceSinceLastDribble += speed * Time.deltaTime;
             if(distanceSinceLastDribble > 1)
@@ -92,6 +97,26 @@ public class Player: MonoBehaviour
                 soundBallDribble.Play();
                 distanceSinceLastDribble = 0;
             }
+        }
+
+        if (!BallAttachedToPlayer) //false
+        {
+            float distanceToBall = Vector3.Distance(transform.position, ball.transform.position);
+
+            if (distanceToBall < 0.5)
+            {
+                BallAttachedToPlayer = true;
+            }
+
+        }
+        if(BallAttachedToPlayer) //true 
+        {
+            
+            Vector2 currentBallLocation = new Vector2(ball.transform.position.x, ball.transform.position.z);
+            ballSpeed = Vector2.Distance(currentBallLocation, previousBallLocation) / Time.deltaTime;
+            ball.transform.position = new Vector3(playerBallPosition.position.x, -0.4205842f, playerBallPosition.position.z);
+            ball.transform.Rotate(new Vector3(transformPlayer.right.x, 0, transformPlayer.right.z), ballSpeed, Space.World);
+            previousBallLocation = currentBallLocation;
         }
         
     }

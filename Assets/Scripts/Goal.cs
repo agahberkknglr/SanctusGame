@@ -23,9 +23,9 @@ public class Goal : MonoBehaviour
         {
             if(name.Equals("Goal1"))
             {
-                scriptPlayer.IncreaseMyScore();
+                //scriptPlayer.IncreaseMyScore();
             }else{
-                scriptPlayer.IncreaseOtherScore();
+                //scriptPlayer.IncreaseOtherScore();
             }
         }
     }
