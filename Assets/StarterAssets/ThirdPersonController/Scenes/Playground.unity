@@ -1270,7 +1270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cfc0bbe0d09ba4088dbfa2f0287582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptPlayer: {fileID: 0}
+  otherScore: 0
+  textGoal: {fileID: 92748657}
+  textScore: {fileID: 1130560294}
+  second: {fileID: 1543039849}
 --- !u!65 &1342527557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1568,7 +1571,7 @@ GameObject:
   - component: {fileID: 1543039847}
   - component: {fileID: 1543039846}
   - component: {fileID: 1543039845}
-  - component: {fileID: 1543039844}
+  - component: {fileID: 1543039849}
   m_Layer: 0
   m_Name: Goal1
   m_TagString: Untagged
@@ -1576,19 +1579,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1543039844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543039843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8cfc0bbe0d09ba4088dbfa2f0287582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptPlayer: {fileID: 0}
 --- !u!65 &1543039845
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1667,6 +1657,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543039849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543039843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e63ab5f9853f8c42a6b11f20abd056a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gk1: {fileID: 1283318636}
+  gk2: {fileID: 1048343728}
+  ball: {fileID: 0}
+  myScore: 0
+  textGoal: {fileID: 92748657}
+  textScore: {fileID: 1130560294}
+  first: {fileID: 1342527556}
 --- !u!1 &1555759945
 GameObject:
   m_ObjectHideFlags: 0
@@ -10064,6 +10073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
+  goalSecond: {fileID: 1543039849}
 --- !u!4 &9073308349196980691
 Transform:
   m_ObjectHideFlags: 0

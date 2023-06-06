@@ -1,11 +1,9 @@
 using UnityEngine;
 using StarterAssets;
-using TMPro;
+
 
 public class Player: MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textScore;
-    [SerializeField] private TextMeshProUGUI textGoal;
     [SerializeField] private Transform transformPlayer;
     public GameObject ball;
     public float ballSpeed;
@@ -15,12 +13,10 @@ public class Player: MonoBehaviour
     private float timeShot = -1f;
     private const int LAYER_SHOOT = 1;
     private CharacterController characterController;
-    private int myScore, otherScore;
-    private float goalTextColorAlpha;  
     private AudioSource soundBallDribble;
     private AudioSource soundBallKick;
     private AudioSource soundCheer;
-    private AudioSource soundGoalCheer;
+    
     private float distanceSinceLastDribble;
     private Vector2 previousBallLocation;
 
@@ -36,11 +32,11 @@ public class Player: MonoBehaviour
         soundBallKick = GameObject.Find("Sound/ball-kick").GetComponent<AudioSource>();
         soundBallDribble = GameObject.Find("Sound/ball-dribble").GetComponent<AudioSource>();
         soundCheer = GameObject.Find("Sound/ambient-cheer").GetComponent<AudioSource>();
-        soundGoalCheer= GameObject.Find("Sound/goal-cheer").GetComponent<AudioSource>();
+        
 
         soundCheer.Play();
 
-        textGoal.fontSize = 0f;
+       
 
         transformPlayer =  this.transform.GetChild(0).GetChild(0); //player cocuklarina eristik 
         playerBallPosition =  this.transform.GetChild(0).GetChild(1);
@@ -81,12 +77,7 @@ public class Player: MonoBehaviour
             animator.SetLayerWeight(LAYER_SHOOT, Mathf.Lerp(animator.GetLayerWeight(LAYER_SHOOT), 0f, Time.deltaTime * 10f));
         }
 
-        if(goalTextColorAlpha>0)
-        {
-            goalTextColorAlpha -= Time.deltaTime;
-            textGoal.alpha = goalTextColorAlpha;
-            textGoal.fontSize = 200 - (goalTextColorAlpha * 1-0);
-        }
+        
 
         if(ball != null)
         {
@@ -121,21 +112,4 @@ public class Player: MonoBehaviour
         
     }
 
-    public void IncreaseMyScore()
-    {
-        myScore++;
-        UpdateScore();
-    }
-
-    public void IncreaseOtherScore()
-    {
-        otherScore++;
-        UpdateScore();
-    }
-
-    private void UpdateScore()
-    {soundGoalCheer.Play();
-       textScore.text = "P1 : "+ myScore.ToString() +" - P2 : "+otherScore.ToString(); 
-       goalTextColorAlpha = 1f;
-    }
 }

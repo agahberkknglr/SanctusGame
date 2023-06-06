@@ -100,12 +100,13 @@ public class Goalkeeper : MonoBehaviour
         {
             // Transition to the catching state
             currentState = GoalkeeperState.Catching;
-        }
+        } 
+        
     }
 
     public void CatchBall()
     {
-        Debug.Log("catch ulan catch");
+        //Debug.Log("catch ulan catch");
         ball.GetComponent<SphereCollider>().isTrigger = true;
 
         ball.GetComponent<Rigidbody>().isKinematic = true; // Disable physics on the ball
