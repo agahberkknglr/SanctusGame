@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Goalkeeper : MonoBehaviour
 {
     public enum GoalkeeperState
@@ -13,6 +14,8 @@ public class Goalkeeper : MonoBehaviour
         Returning
     }
 
+    private Animator animator;
+    public Transform container;
     public Transform ball;
     public float runSpeed = 5f;
     public float catchingRadius = 1f;
@@ -29,7 +32,7 @@ public class Goalkeeper : MonoBehaviour
 
     private void Start()
     {
-
+        animator = GetComponent<Animator>();
         // Set the initial state of the goalkeeper
         currentState = GoalkeeperState.Idle;
         startingPosition = transform.position; // Başlangıç pozisyonunu kaydet
@@ -41,12 +44,20 @@ public class Goalkeeper : MonoBehaviour
         switch (currentState)
         {
             case GoalkeeperState.Idle:
+                animator.SetBool("running", false);
+                transform.LookAt(ball);
+
+
                 CheckDistanceToBall();
                 break;
             case GoalkeeperState.Running:
+                animator.SetBool("running", true);
                 RunTowardsBall();
                 break;
+
+
             case GoalkeeperState.Catching:
+                animator.SetBool("catch2", true);
                 if (!isCatchingBall)
                 {
                     CatchBall();
@@ -56,16 +67,26 @@ public class Goalkeeper : MonoBehaviour
                 }
                 if (isCatchingBall && Time.time >= catchTime + throwDelay)
                 {
+                    transform.LookAt(throwTarget);
+
+                    animator.SetBool("catch2", false);
+
                     currentState = GoalkeeperState.Throwing; // Durumu Throwing olarak güncelle
 
                     isCatchingBall = false;
                 }
                 break;
+
+
             case GoalkeeperState.Throwing:
-                // Throwing durumuyla ilgili gerekli işlemleri yapabilirsiniz
-                ThrowBall();
+                //ThrowBall();
                 break;
+
+
             case GoalkeeperState.Returning:
+                animator.SetBool("backrun", true);
+                transform.LookAt(startingPosition);
+
                 ReturnBase();
                 break;
             default:
@@ -88,6 +109,7 @@ public class Goalkeeper : MonoBehaviour
 
     public void RunTowardsBall()
     {
+        transform.LookAt(ball);
         // Calculate the direction towards the ball
         Vector3 direction = ball.position - transform.position;
         direction.y = 0f; // Ignore the y-axis to keep the goalkeeper on the same level
@@ -112,7 +134,7 @@ public class Goalkeeper : MonoBehaviour
         ball.GetComponent<Rigidbody>().isKinematic = true; // Disable physics on the ball
         // Catch the ball
         ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        ball.parent = transform; // Attach the ball to the goalkeeper
+        ball.parent = container; // Attach the ball to the goalkeeper
         ball.localPosition = Vector3.zero; // Place the ball at the goalkeeper's position
 
         // Transition to the catching state
@@ -124,8 +146,9 @@ public class Goalkeeper : MonoBehaviour
     public void ThrowBall()
     {
         Debug.Log("throwwwwww");
+
         // Throw the ball towards the throw target
-        Vector3 throwDirection = transform.forward;
+        Vector3 throwDirection = throwTarget.transform.position - ball.transform.position;
         ball.parent = null; // Detach the ball from the goalkeeper
         ball.GetComponent<Rigidbody>().isKinematic = false; // Enable physics on the ball
         ball.GetComponent<Rigidbody>().velocity = throwDirection.normalized * throwForce;

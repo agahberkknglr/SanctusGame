@@ -23,7 +23,11 @@ public class Player: MonoBehaviour
     public bool BallAttachedToPlayer = false;
     
     void Start()
+
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+
         starterAssetsInputs = GetComponent<StarterAssetsInputs>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();

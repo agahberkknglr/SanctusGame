@@ -467,7 +467,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524022256}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c39cbb7e4dcc0cd4b864a2b7777f4244, type: 3}
@@ -772,6 +772,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+--- !u!4 &746842592 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5621442062734800805, guid: 4026c24c2852140eeb40f47cab2fea66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1918704554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &821618476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821618477}
+  m_Layer: 0
+  m_Name: container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821618477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821618476}
+  m_LocalRotation: {x: -0.5069024, y: 0.49693033, z: -0.50489, w: 0.4911173}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 746842592}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1048343727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4026c24c2852140eeb40f47cab2fea66,
@@ -790,13 +827,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ed693f873184a049f0d5d04093a79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  container: {fileID: 821618477}
   ball: {fileID: 8557128660485254567}
-  runSpeed: 5
+  runSpeed: 3
   catchingRadius: 1
   minDistanceToBall: 7
   throwForce: 10
   throwTarget: {fileID: 1568606216}
-  throwDelay: 1
+  throwDelay: 3
   currentState: 0
 --- !u!114 &1048343729
 MonoBehaviour:
@@ -839,7 +877,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!4 &1048343733 stripped
 Transform:
@@ -1163,6 +1201,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1257522311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1257522312}
+  m_Layer: 0
+  m_Name: container (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1257522312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257522311}
+  m_LocalRotation: {x: 0.47955993, y: 0.5147751, z: -0.53092974, w: -0.4723797}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.14999999, y: 0.15, z: 0.15000002}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1357468909}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1283318634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4026c24c2852140eeb40f47cab2fea66,
@@ -1195,12 +1264,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ed693f873184a049f0d5d04093a79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  container: {fileID: 1257522312}
   ball: {fileID: 8557128660485254567}
-  runSpeed: 5
-  catchingRadius: 0.005
-  minDistanceToBall: 10
+  runSpeed: 3
+  catchingRadius: 1
+  minDistanceToBall: 7
   throwForce: 10
-  throwTarget: {fileID: 0}
+  throwTarget: {fileID: 1568606216}
   throwDelay: 3
   currentState: 0
 --- !u!4 &1283318638 stripped
@@ -1236,7 +1306,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &1342527555
 GameObject:
@@ -1480,6 +1550,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &1357468909 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5621442062734800805, guid: 4026c24c2852140eeb40f47cab2fea66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1657757182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1402827283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1787,7 +1863,7 @@ BoxCollider:
   m_GameObject: {fileID: 1568606212}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1798,7 +1874,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568606212}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1849,7 +1925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568606212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.96, y: -0.19, z: 18.37}
+  m_LocalPosition: {x: 4.96, y: 0.156, z: 18.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2038,6 +2114,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: char_goalkeeper sol
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4026c24c2852140eeb40f47cab2fea66,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f4533ae2bbf53411294d32ceda6d8a4d, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 4026c24c2852140eeb40f47cab2fea66,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig10:Hips'\n\tTransform 'mixamorig10:Neck'\n\tTransform
+        'mixamorig10:RightHandIndex2'\n\tTransform 'mixamorig10:Spine'\n\tTransform
+        'mixamorig10:RightHandThumb3'\n\tTransform 'mixamorig10:RightHandRing2'\n\tTransform
+        'mixamorig10:LeftHandPinky1'\n\tTransform 'mixamorig10:RightHandThumb2'\n\tTransform
+        'mixamorig10:LeftHandRing2'\n\tTransform 'mixamorig10:RightHandThumb1'\n\tand
+        more ...\n\tFrom animation clip 'idle'"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4026c24c2852140eeb40f47cab2fea66, type: 3}
 --- !u!1 &1802333015
@@ -2204,6 +2297,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: char_goalkeeper sag
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4026c24c2852140eeb40f47cab2fea66,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f4533ae2bbf53411294d32ceda6d8a4d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4026c24c2852140eeb40f47cab2fea66, type: 3}
 --- !u!1 &1977336609
@@ -4669,13 +4767,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.972549, g: 0.9607843, b: 0.8784314, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 1
